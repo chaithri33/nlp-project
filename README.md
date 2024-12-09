@@ -36,9 +36,9 @@ Improve the UI for a better user experience.
 
 * Web Scraping: Developed by Chaithri
 
-* NLP & Summarization: Implemented by Anvitha, Pravallika
+* NLP & Summarization: Implemented by Anvitha, Sowmitha
 
-* Front-End Interface: Created by Sowmitha, Vandana
+* Front-End Interface: Created by Pravallika, Vandana
 
 * Documentation: Compiled by Anvitha 
 
