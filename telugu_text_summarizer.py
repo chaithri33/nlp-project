@@ -1,4 +1,4 @@
-%%writefile app.py
+
 import streamlit as st
 import requests
 from bs4 import BeautifulSoup
@@ -9,7 +9,6 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from scipy.sparse import csr_matrix
 import networkx as nx
 
-# Load the Telugu NLP model
 nlp_model = Telugu()
 
 def extract_text_from_url(url):
@@ -36,12 +35,12 @@ def generate_summary(text):
     Summarizes the given text using a PageRank-based algorithm.
     """
     doc = nlp_model(text)
-    stopwords = []  # For Telugu, we don't use stopwords
+    stopwords = [] 
 
     word_freq = {}
     sentences = sentence_tokenize.sentence_split(text, lang='te')
 
-    # Calculate word frequencies
+
     for sentence in sentences:
         for word in sentence.split():
             if word not in stopwords:
@@ -49,18 +48,15 @@ def generate_summary(text):
 
     max_freq = max(word_freq.values(), default=1)
 
-    # Normalize word frequencies
     for word in word_freq:
         word_freq[word] /= max_freq
 
-    # Create a BoW matrix and apply TF-IDF
     vectorizer = CountVectorizer()
     bow_matrix = vectorizer.fit_transform(sentences)
     tfidf_transformer = TfidfTransformer()
     tfidf_matrix = tfidf_transformer.fit_transform(bow_matrix)
     tfidf_csr = csr_matrix(tfidf_matrix)
 
-    # Create a graph where nodes are sentences and edges are weighted by TF-IDF similarity
     graph = nx.Graph()
     for i, sentence in enumerate(sentences):
         graph.add_node(i, sentence=sentence)
@@ -71,13 +67,10 @@ def generate_summary(text):
             if weight > 0:
                 graph.add_edge(i, j, weight=weight)
 
-    # Compute sentence scores using PageRank
     sentence_scores = nx.pagerank(graph)
 
-    # Sort sentences based on their scores
     ranked_sentences = sorted(sentence_scores, key=sentence_scores.get, reverse=True)
 
-    # Determine the summary length
     text_length = len(text)
     if text_length < 500:
         num_sentences = 1
@@ -88,14 +81,11 @@ def generate_summary(text):
     else:
         num_sentences = 5
 
-    # Generate the summary
     summary = ' '.join([sentences[i] for i in ranked_sentences[:num_sentences]])
     return summary
 
-# Streamlit app interface
 st.title("Telugu Text Summarizer")
 
-# User input for URL
 input_url = st.text_input("Enter the URL of the page to scrape and summarize:")
 
 if input_url:
