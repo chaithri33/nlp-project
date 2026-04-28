@@ -1,46 +1,54 @@
-# nlp-project
+# NLP News Reader Chatbot 
 
-## Bashabot_team_29
+## Project Overview
+Developed an NLP-based News Reader Analysis System that processes user queries and returns relevant news information using Natural Language Processing and Information Retrieval techniques.
 
-### Problem Statement
+The system takes raw news articles, preprocesses the text, converts it into numerical representations, and retrieves the most relevant news responses based on user questions.
 
-Accessing relevant news and staying updated with current events is important, but many existing news platforms and services may not cater to the specific needs of the Telugu-speaking community. This can create a gap for users who prefer to engage with news in their native language and seek convenient, personalized ways to access it.
+## Key Features
+- Interactive chatbot for querying news topics
+- Retrieves relevant news articles based on user input
+- Supports categories like sports, politics, business, technology, etc.
+- Fast similarity-based search using TF-IDF and Cosine Similarity
 
-### Project Overview
+## Technologies Used
+- Python
+- NLTK
+- Scikit-learn
+- Pandas
+- NumPy
 
-The Telugu Text Summarizer is a web-based application built using Streamlit that scrapes and summarizes text content from a given webpage in Telugu. The project uses NLP techniques, including TF-IDF and PageRank, to generate a concise summary of the input content.
+## Text Preprocessing
+Applied multiple NLP preprocessing steps to clean and standardize raw news data:
 
-### Features
+- Lowercasing
+- Tokenization
+- Stopword removal
+- Punctuation removal
+- Text normalization
 
-Web Scraping: Extracts content from webpages (title and paragraphs).
+These steps improved data quality and made the text machine-readable.
 
-Text Summarization: Uses an algorithm based on TF-IDF and PageRank for automatic text summarization.
+## Feature Extraction using TF-IDF
+Converted cleaned news articles into numerical vectors using TF-IDF (Term Frequency - Inverse Document Frequency).
 
-Telugu NLP: Processes and analyzes Telugu text using the spacy library with the Telugu language model.
+TF-IDF helps identify important and unique words within the news corpus by assigning higher weights to meaningful terms.
 
-### Project Structure
+## Query Handling & Retrieval
+When a user enters a query:
 
-telugu-text-summarizer/
+1. The query is preprocessed
+2. Converted into TF-IDF vector form
+3. Cosine Similarity is calculated between the query and all news article vectors
+4. The most relevant article/snippet is returned
 
-├── telugu_text_summarizer.py   
-├── requirements.txt           
-└── README.md  
+## Example Queries
+- What's the latest in sports?
+- Give me today's political news
+- Show me technology headlines
+- Business market updates
 
-### Future Enhancements
-
-Add support for multiple languages.
-Implement more advanced NLP techniques like BERT for summarization.
-Improve the UI for a better user experience.
-
-### Contributions
-
-* Web Scraping: Developed by Chaithri
-
-* NLP & Summarization: Implemented by Anvitha, Sowmitha
-
-* Front-End Interface: Created by Pravallika, Vandana
-
-* Documentation: Compiled by Anvitha 
-
-* Testing & Optimization: Conducted by Chaithri
-
+## Model Performance
+- Efficient retrieval of relevant news responses
+- Fast text matching across large news datasets
+- Accurate topic-based article recommendations
