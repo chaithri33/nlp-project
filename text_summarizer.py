@@ -9,7 +9,7 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from scipy.sparse import csr_matrix
 import networkx as nx
 
-nlp_model = Telugu()
+nlp_model = T()
 
 def extract_text_from_url(url):
     """
@@ -84,7 +84,7 @@ def generate_summary(text):
     summary = ' '.join([sentences[i] for i in ranked_sentences[:num_sentences]])
     return summary
 
-st.title("Telugu Text Summarizer")
+st.title("Text Summarizer")
 
 input_url = st.text_input("Enter the URL of the page to scrape and summarize:")
 
