@@ -1,4 +1,4 @@
-# NLP News Reader Chatbot 
+# NLP News Reader Analysis
 
 ## Project Overview
 Developed an NLP-based News Reader Analysis System that processes user queries and returns relevant news information using Natural Language Processing and Information Retrieval techniques.
